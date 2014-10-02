@@ -10,7 +10,6 @@ div {
 .canvas{
   margin: 0;
   padding: 0;
-  border: 1px solid black;
   width: 1000px;
   height: 1500px;
 }
@@ -19,13 +18,16 @@ div {
  width: 100px;
  height: 100px;
  display: inline-flex;
+ position: relative;
  margin: 0;
  padding: 0;
  -webkit-box-sizing: border-box;
+ overflow: hidden;
+ /*border: 1px solid black;*/
 }
 
 .wall{
-  background-color: #000;
+  background-color: #055 ;
 }
 
 .empty{
@@ -36,37 +38,86 @@ div {
   width: 0px;
   height: 0px;
   margin: auto;
-  border-right: 40px solid transparent;
-  border-top: 40px solid yellow;
-  border-left: 40px solid yellow;
-  border-bottom: 40px solid yellow;
+  position: relative;
+  border-right: 40px solid #fd0;
+  border-top: 40px solid #fd0;
+  border-left: 40px solid #fd0;
+  border-bottom: 40px solid #fd0;
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
   border-bottom-left-radius: 40px;
   border-bottom-right-radius: 40px;
 }
+.pacman:before{
+  content:"";
+  position: absolute;
+  top: -20px;
+  left: 0px;
+  width: 0;
+  height: 0;
+
+  border-top: 20px solid transparent;
+  border-right: 1050px solid white;
+  border-bottom: 20px solid transparent;
+  border-radius: 15px;
+  -webkit-animation: mymove 0.8s infinite;
+}
+
+@-webkit-keyframes mymove {
+    0%   {border-right: 1000px solid white;}
+    25%   {border-right: 200px solid white;}
+    50%   {border-right: 50px solid white;}
+    75%   {border-right: 200px solid white;}
+    100%  {border-right: 1000px solid white;}
+    
+} 
+
 .monster {
     background: purple;
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 90px;
     position: relative;
     text-align: center;
+    border-top-right-radius: 60px;
+    border-top-left-radius: 60px;
     margin: auto;
-    -webkit-transform: rotate(20deg);
-       -moz-transform: rotate(20deg);
-        -ms-transform: rotate(20deg);
-         -o-transform: rotate(20deg);
 }
+.monster:after,.monster:before{
+  content: "";
+  top: 66px;
+  position: absolute;
+  border-right: 23px solid transparent;
+  border-left: 23px solid transparent;
+  border-bottom: 32px solid white;
+}
+.monster:after {
+    left: -5px;
+}
+
 .monster:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 50px;
-    width: 50px;
-    background: purple;
-    -webkit-transform: rotate(135deg);
-       -moz-transform: rotate(135deg);
-        -ms-transform: rotate(135deg);
-         -o-transform: rotate(135deg);
+    left: 30px;
+  }
+
+.monster-eye {
+  background-color: #00f;
+  border: 6px solid white;
+  position: absolute;
+  top: 20px;
+  left: 27px;
+  width: 20px;
+  height: 20px;
+  border-radius: 30px;
+  -webkit-box-sizing: border-box;
+}
+.monster-eye:after {
+  content:"";
+  background-color: #00f;
+  border: 6px solid white;
+  position: absolute;
+  top: -6px;
+  left: 18px;
+  width: 20px;
+  height: 20px;
+  border-radius: 30px;
+   -webkit-box-sizing: border-box;
 }

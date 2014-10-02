@@ -10,7 +10,6 @@ PACMAN = 'P';
 EMPTY = ' ';
 MONSTER = '1';
 
-
 $(document).keydown(function(e){
         var key = e.which;
         
@@ -20,8 +19,6 @@ $(document).keydown(function(e){
         else if(key == "40") pacman_dir = "d";
       }
       )
-
-
 var map;
  // = [
  //                ['*', '*', '*', '*', '*'],
@@ -49,7 +46,7 @@ var paint = function() {
           $(".canvas").append('<div class="element"><div class="pacman"/></div>');
         }
         else if(map[i][j] == MONSTER){
-          $(".canvas").append('<div class="element"><div class="monster"/></div>');
+          $(".canvas").append('<div class="element"><div class="monster"/><div class="monster-eye"/></div>');
         }
         else $(".canvas").append('<div class="element empty"/>');
       }
@@ -67,5 +64,5 @@ $(document).ready(function(e) {
   //start game
   if(typeof game_loop != "undefined") clearInterval(game_loop);
     cycle = 0;
-    game_loop = setInterval(mainloop, 500);
+    //game_loop = setInterval(mainloop, 500);
 })
