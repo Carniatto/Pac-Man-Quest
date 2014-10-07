@@ -41,9 +41,19 @@ var paint = function() {
     $(".canvas").empty();
     for (var i = 0; i < map.length; i++) {
       for (var j = 0; j < map[i].length; j++) {
-        if(map[i][j] == WALL) $(".canvas").append('<div class="element wall"/>');
+        if(map[i][j] == WALL) $(".canvas").append('<div class="element wall"><div class="section"></div><div class="section"></div><div class="section"></div><div class="section"></div><div class="section"></div><div class="section"></div><div class="section"></div><div class="section"></div><div class="section"></div></div>');
         else if(map[i][j] == PACMAN) {
-          $(".canvas").append('<div class="element"><div class="pacman"/></div>');
+          if(pacman_dir == "r")
+            $(".canvas").append('<div class="element empty"><div class="gladiator gladiator-walk-right"/></div>');
+          else if(pacman_dir == "l")
+            $(".canvas").append('<div class="element empty"><div class="gladiator gladiator-walk-left"/></div>');
+          else if(pacman_dir == "d")
+            $(".canvas").append('<div class="element empty"><div class="gladiator gladiator-walk-down"/></div>');
+          else if(pacman_dir == "u")
+            $(".canvas").append('<div class="element empty"><div class="gladiator gladiator-walk-up"/></div>');
+          else{
+            $(".canvas").append('<div class="element empty"><div class="gladiator gladiator-steady"/></div>');
+          }
         }
         else if(map[i][j] == MONSTER){
           $(".canvas").append('<div class="element"><div class="monster"/><div class="monster-eye"/></div>');
@@ -64,5 +74,5 @@ $(document).ready(function(e) {
   //start game
   if(typeof game_loop != "undefined") clearInterval(game_loop);
     cycle = 0;
-    //game_loop = setInterval(mainloop, 500);
+   game_loop = setInterval(mainloop, 500);
 })
